@@ -1,23 +1,32 @@
-ul {
-    display: flex;
-   justify-content: end;
+.Main {
+    max-width: 1200px;
+    margin: 0 auto;
 }
 
-li {
+.Main-nav {
+   display: flex;
+   justify-content: end;
+   align-items: center;
+   height: 50px;
+}
+
+.Main-li {
     margin: 0 15px;
     list-style-type: none;
-    
 }
 
-main {
-    display: flex;
+.Main-li-link {
+    text-decoration: none;
+    color: black;
 }
 
-.items {
+h1 {
+    text-align: center;
+}
+
+.Items {
     display: flex;
     flex-wrap: wrap;
+    justify-content: center;
 }
 
-.Item {
-    margin: 10px 20px;
-}

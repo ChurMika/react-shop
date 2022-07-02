@@ -1,4 +1,4 @@
-import React from 'react'
+import { React, useState } from 'react'
 import { Link } from 'react-router-dom'
 import { useSelector } from 'react-redux'
 import Item from '../Item/Item'
@@ -6,28 +6,27 @@ import './Main.css'
 
 const Main = (props) => {
 
-    const items = useSelector((state) => state.items)
-
-    console.log(items)
-
+    const items = useSelector((state) => state.items.items)
+    
     const newItems = items.filter((item) => item.quantity > 0)
 
     return (
         <div className="Main">
             <nav>
-                <ul>
-                    <li><Link to="/login">Личный кабинет</Link></li>
-                    <li><Link to="/cart">Корзина</Link></li>
+                <ul className='Main-nav'>
+                    <li className='Main-li'><Link to="/login" className='Main-li-link'>Личный кабинет</Link></li>
+                    <li className='Main-li'><Link to="/cart" className='Main-li-link'>Корзина</Link></li>
                 </ul>
             </nav>
             <div>
+                <h1>Выберите товары</h1>
                 {items ? (
-                    <div className="items">
+                    <div className="Items">
                         {newItems.map((item) => (
                             <Item
                                 key={item.id}
                                 {...item}
-                            />
+                            />                            
                         ))}
                     </div>
                 ) : <p>Не удается загрузить данные</p>}

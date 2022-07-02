@@ -1,6 +1,6 @@
 import React from 'react'
 import { Link, Redirect } from 'react-router-dom'
-
+import './Login.css'
 export default function Login (props) {
 
     
@@ -9,21 +9,33 @@ export default function Login (props) {
     return (
         <div className="Login">
             <nav>
-                <ul>
-                    <li><Link to="/">Главная</Link></li>
+                <ul className='Main-nav'>
+                    <li className='Main-li'><Link to="/" className='Main-li-link'>Главная</Link></li>
                 </ul>
             </nav>
             <div>
                 <h1>Войти</h1>
-                <form>
-                    <label for='email'>Введите электронную почту</label>
-                    <input type='email' name='email'></input>
-                    <br/>
-                    <label for='password'>Введите пароль</label>
-                    <input type='password' name='password'></input>
-                    <Link to="/profile">Войти</Link>
-                </form>
-                <Link to="/newUser">Зарегистроваться</Link>
+                <div className='Login-form'>
+                    <form className='Form'>
+                        <label for='email' className='Label'>Введите электронную почту</label>
+                        <input type='email' name='email' className='Input' 
+                        required>
+
+                        </input>
+                        
+                        <label for='password' className='Label'>Введите пароль</label>
+                        <input type='password' name='password' className='Input' 
+                        required 
+                        minlength="4"
+                        ></input>
+
+                        <div className='Buttons'>
+                            <Link to="/profile">Войти</Link>
+                            <Link to="/newUser">Зарегистроваться</Link>
+                        </div>
+                        
+                    </form>
+                </div>
             </div>          
         </div>
     )

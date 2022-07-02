@@ -1,18 +1,27 @@
 import React from 'react'
+import propTypes from 'prop-types'
 import './CartItem.css'
 
-const CartItem = (props) => {
+
+export default function CartItem (props) {
+
 
     return (
-        <div className="Cart-Item">
-            <img src='#' alt='товар'></img>
-            <p>Название товара</p>
+        <div className="Cart-Item" id={props.id}>
+            <img src={props.img} alt='товар'></img>
+            <p>{props.name}</p>
             <button>-</button>
-            <p>Количество товара</p>
+            <p>Количество</p>
             <button>+</button>
             <button>Х</button>
         </div>
     )
 }
 
-export default CartItem
+CartItem.propTypes = {
+    id: propTypes.number,
+    name: propTypes.string,
+    img: propTypes.string
+}
+CartItem.defaultProps = {}
+
