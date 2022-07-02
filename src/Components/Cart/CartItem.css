@@ -1,0 +1,6 @@
+.Cart-Item {
+    width: 600px;
+    height: 100px;
+    display: flex;
+    justify-content: space-between;
+}

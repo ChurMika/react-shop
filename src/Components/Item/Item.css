@@ -1,0 +1,9 @@
+.Item-descr {
+    width: 150px;
+    min-height: 200px;
+    border: 1px solid black;
+}
+
+.Item-btn {
+    display: none;
+}
