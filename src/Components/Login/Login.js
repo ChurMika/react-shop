@@ -1,10 +1,36 @@
-import React from 'react'
-import { Link, Redirect } from 'react-router-dom'
+import { React, useState} from 'react'
+import { Link, Navigate } from 'react-router-dom'
+import { useSelector } from 'react-redux'
 import './Login.css'
+
 export default function Login (props) {
 
+    const profiles = useSelector((state) => state.profiles.profiles) 
+    console.log(profiles);
     
-    //admin@admin.ru
+    const [email, inputEmail] = useState()
+    const [password, inputPassword] = useState()
+
+    let mistake
+
+    function login () {
+        let checkEmail = email
+        let checkPassword = password
+
+        profiles.forEach((el) => {
+            console.log(el.email);
+            if (el.email === checkEmail && el.email === 'admin@admin.ru' && el.password === checkPassword) {
+                return <Navigate to='/admin' />
+            } else if (el.email === checkEmail && el.password === checkPassword) {
+                return <Navigate to='/profile' />
+            } else if (el.email === checkEmail && el.password != checkPassword) {
+                mistake = ' '
+            } else if (el.email != checkEmail) {
+                mistake = ' '
+            }
+        })
+        
+    }
 
     return (
         <div className="Login">
@@ -19,21 +45,23 @@ export default function Login (props) {
                     <form className='Form'>
                         <label for='email' className='Label'>Введите электронную почту</label>
                         <input type='email' name='email' className='Input' 
-                        required>
+                        required
+                        onChange={(e) => inputEmail(e.target.value)}>
 
                         </input>
                         
                         <label for='password' className='Label'>Введите пароль</label>
                         <input type='password' name='password' className='Input' 
                         required 
-                        minlength="4"
+                        minLength="4"
+                        onChange={(e) => inputPassword(e.target.value)}
                         ></input>
 
                         <div className='Buttons'>
-                            <Link to="/profile">Войти</Link>
+                            <button onClick={login}>Войти</button>
                             <Link to="/newUser">Зарегистроваться</Link>
                         </div>
-                        
+                        <div>{mistake? <p>Вы ввели неправильный пароль </p> : null}</div>
                     </form>
                 </div>
             </div>          
@@ -41,93 +69,3 @@ export default function Login (props) {
     )
 }
 
-/*export default function Login(props) {
-    const [email, setEmail] = React.useState('')
-    const [password, setPassword] = React.useState('')
-    const [error, setError] = React.useState('')
-    const [isSigningUp, setIsSigningUp] = React.useState(false)
-
-    const handleChangeEmail = (e) => setEmail(e.target.value)
-    const handleChangePassword = (e) => setPassword(e.target.value)
-    const handleIsSigningUpChange = (e) => setIsSigningUp(e.target.checked)
-
-    const handleLogin = async () => {
-        try {
-            await firebase.auth().signInWithEmailAndPassword(email, password)
-        } catch (error) {
-            setError(error.message)
-        }
-    }
-
-    const handleSignUp = async () => {
-        try {
-            await firebase
-                .auth()
-                .createUserWithEmailAndPassword(email, password)
-        } catch (error) {
-            setError(error.message)
-        }
-    }
-
-    const handleSubmit = () => {
-        console.log('Пытемся залогиниться', { email, password })
-
-        if (!email || !password) {
-            setError('Заполните поля')
-            return
-        }
-
-        if (isSigningUp) {
-            handleSignUp()
-            return
-        }
-
-        handleLogin()
-    }
-
-    return (
-        <div
-            style={{
-                display: 'flex',
-                flexDirection: 'column',
-                alignItems: 'center',
-            }}
-        >
-            <p>{isSigningUp ? 'Sign up' : 'Login'}</p>
-            <FormControlLabel
-                control={
-                    <Checkbox
-                        checked={isSigningUp}
-                        onChange={handleIsSigningUpChange}
-                        name="checkedB"
-                        color="primary"
-                    />
-                }
-                label={<p>Еще нет учетной записи?</p>}
-            />
-            <TextField
-                className="child__text-field"
-                variant="outlined"
-                placeholder="Email"
-                value={email}
-                type="email"
-                onChange={handleChangeEmail}
-            />
-            <TextField
-                className="child__text-field"
-                variant="outlined"
-                placeholder="Password"
-                value={password}
-                type="text"
-                onChange={handleChangePassword}
-            />
-
-            <button onClick={handleSubmit}>
-                {isSigningUp ? 'Sign up' : 'Login'}
-            </button>
-
-            <hr />
-            <p>{error}</p>
-        </div>
-    )
-}*/

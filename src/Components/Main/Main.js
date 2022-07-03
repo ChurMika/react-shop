@@ -7,7 +7,7 @@ import './Main.css'
 const Main = (props) => {
 
     const items = useSelector((state) => state.items.items)
-    
+
     const newItems = items.filter((item) => item.quantity > 0)
 
     return (
