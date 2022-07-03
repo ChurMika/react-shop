@@ -16,7 +16,10 @@ export default function Item (props) {
                 <p className="Item-descr">{props.description}</p>
                 <p className="Item-price">Цена: {props.price}</p>
                 <p className="Item-quan">Осталось {props.quantity} шт.</p>
+                {props.quantity > 0 ? 
                 <button className="Item-btn" onClick={() => {dispatch(addItem(props.itemID, props.name))}}>Купить</button>
+                : <button className="Item-btn">Заказать</button>
+                }
         </div>
     )
 }

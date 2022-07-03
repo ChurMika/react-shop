@@ -1,4 +1,4 @@
-import { React, useState } from 'react'
+import React from 'react'
 import { Link } from 'react-router-dom'
 import { useSelector } from 'react-redux'
 import Item from '../Item/Item'
@@ -14,6 +14,7 @@ const Main = (props) => {
         <div className="Main">
             <nav>
                 <ul className='Main-nav'>
+                    <li className='Main-li'><Link to="/admin" className='Main-li-link'>Админ</Link></li>
                     <li className='Main-li'><Link to="/login" className='Main-li-link'>Личный кабинет</Link></li>
                     <li className='Main-li'><Link to="/cart" className='Main-li-link'>Корзина</Link></li>
                 </ul>
@@ -29,8 +30,7 @@ const Main = (props) => {
                             />                            
                         ))}
                     </div>
-                ) : <p>Не удается загрузить данные</p>}
-                
+                ) : <p>Не удается загрузить данные</p>}                
             </div>
         </div>
     )

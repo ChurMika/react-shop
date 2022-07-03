@@ -1,3 +1,5 @@
+import { ADD_NEW_ITEM } from './actions'
+
 const initialState = {
     "items": [
         {
@@ -107,6 +109,22 @@ const initialState = {
     ]
 }
 
-export default function stateReducer(state = initialState) {
-            return state      
+export default function stateReducer(state = initialState, action) {
+    switch (action.type) {
+        case ADD_NEW_ITEM: {
+            return {
+                ...state,
+                items: {
+                    itemID: action.payload.itemID,
+                    name: action.payload.name,
+                    img: action.payload.img,
+                    description: action.payload.description,
+                    price: action.payload.price,
+                    quantity: action.payload.quantity
+                }
+            }
+        }       
+        default:
+            return state
+    }    
 }
