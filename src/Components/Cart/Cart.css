@@ -1,3 +1,29 @@
+.Main {
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.Main-nav {
+   display: flex;
+   justify-content: end;
+   align-items: center;
+   height: 50px;
+}
+
+.Main-li {
+    margin: 0 15px;
+    list-style-type: none;
+}
+
+.Main-li-link {
+    text-decoration: none;
+    color: black;
+}
+
+h1 {
+    text-align: center;
+}
+
 .Cart-Main {
     margin: 0 auto;
     width: 600px;

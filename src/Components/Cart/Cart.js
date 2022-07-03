@@ -9,11 +9,9 @@ const Cart = (props) => {
         <div className="Cart">
             <nav>
             <nav>
-                <ul>
-                    <li><Link to="/">Главная</Link></li>
-                    <li><Link to="/admin">Админ</Link></li>
-                    <li><Link to="/login">Личный кабинет</Link></li>
-                    <li><Link to="/cart">Корзина</Link></li>
+                <ul className='Main-nav'>
+                    <li className='Main-li'><Link to="/" className='Main-li-link'>Главная</Link></li>
+                    <li className='Main-li'><Link to="/login" className='Main-li-link'>Личный кабинет</Link></li>
                 </ul>
             </nav>
             </nav>

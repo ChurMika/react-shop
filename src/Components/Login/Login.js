@@ -6,7 +6,6 @@ import './Login.css'
 export default function Login (props) {
 
     const profiles = useSelector((state) => state.profiles.profiles) 
-    console.log(profiles);
     
     const [email, inputEmail] = useState()
     const [password, inputPassword] = useState()
@@ -24,9 +23,9 @@ export default function Login (props) {
             } else if (el.email === checkEmail && el.password === checkPassword) {
                 return <Navigate to='/profile' />
             } else if (el.email === checkEmail && el.password != checkPassword) {
-                mistake = ' '
+                mistake = true
             } else if (el.email != checkEmail) {
-                mistake = ' '
+                mistake = true
             }
         })
         
@@ -58,7 +57,7 @@ export default function Login (props) {
                         ></input>
 
                         <div className='Buttons'>
-                            <button onClick={login}>Войти</button>
+                            <button onClick={login} className='Login-btn'>Войти</button>
                             <Link to="/newUser">Зарегистроваться</Link>
                         </div>
                         <div>{mistake? <p>Вы ввели неправильный пароль </p> : null}</div>

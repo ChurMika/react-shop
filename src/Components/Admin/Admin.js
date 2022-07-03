@@ -8,9 +8,10 @@ const Admin = (props) => {
     return (
         <div className="Admin">
             <nav>
-                <ul>
-                    <li><Link to="/">Главная</Link></li>
-                    <li><button>Выйти</button></li>
+                <ul className='Main-nav'>
+                    <li className='Main-li'><Link to="/" className='Main-li-link'>Главная</Link></li>
+                    <li className='Main-li'><Link to="/cart" className='Main-li-link'>Корзина</Link></li>
+                    <li className='Main-li'><button>Выйти</button></li>
                 </ul>
             </nav>
             <h1>Admin</h1>
